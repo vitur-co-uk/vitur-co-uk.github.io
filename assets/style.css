@@ -16,6 +16,7 @@ a.text-link { color: var(--accent); }
 
 .logo { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: .2px; }
 .logo-text { font-weight: 700; }
+.logo-mark { font-weight: 700; font-size: 1.5rem; }
 /* --- Logo sizing fix --- */
 .logo-img { 
   height: 28px;
