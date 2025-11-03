@@ -52,6 +52,11 @@ a.text-link { color: var(--accent); }
 .trust { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); }
 .trust span { border:1px solid var(--line); padding:.35rem .55rem; border-radius: 8px; font-size:.9rem; }
 
+/* Home hero trust replacement: intro + chips */
+.trust-intro { color: var(--muted); max-width: 780px; font-size: 0.98rem; }
+.trust-chips { display: flex; gap: 12px; flex-wrap: wrap; }
+.chip { border:1px solid var(--line); padding:.35rem .7rem; border-radius: 10px; font-size:.92rem; background: transparent; color: var(--fg); opacity: 0.95; }
+
 .btn { display: inline-block; padding: .7rem 1rem; border-radius: 10px; border: 1px solid var(--line); }
 .btn-primary { background: var(--accent); color: #0A0A0A; }
 .btn-secondary { background: transparent; }
