@@ -32,7 +32,7 @@ a.text-link { color: var(--accent); }
 }
 
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; width: min(1100px, 92%); margin: 0 auto; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .nav a { margin-left: 1rem; opacity: .9; }
 .menu-toggle { display:none; background:transparent; border:1px solid var(--line); color:var(--fg); padding:.4rem .6rem; border-radius:8px; }
 
@@ -65,7 +65,7 @@ a.text-link { color: var(--accent); }
 .page-hero h1 { margin: 0 0 8px; }
 .features { padding: 20px 0; }
 .feature { background: var(--card); border:1px solid var(--line); padding:16px; border-radius:12px; }
-.callout { background: linear-gradient(180deg, rgba(201,193,170,0.12), rgba(201,193,170,0.06)); border:1px dashed var(--line); border-radius:14px; padding:20px; margin: 16px 0 48px; text-align:center; }
+.callout { background: linear-gradient(180deg, rgba(201,193,170,0.12), rgba(201,193,170,0.06)); border:1px dashed var(--line); border-radius:14px; padding:20px; margin: 16px auto 48px; text-align:center; width: 100%; }
 
 .checklist { padding-left: 1.25rem; }
 .checklist li { margin: .4rem 0; }
