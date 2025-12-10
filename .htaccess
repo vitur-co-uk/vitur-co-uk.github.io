@@ -1,0 +1,58 @@
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Leverage Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access 1 week"
+  ExpiresByType text/css "access 1 month"
+  ExpiresByType text/javascript "access 1 month"
+  ExpiresByType application/javascript "access 1 month"
+  ExpiresByType image/jpeg "access 1 year"
+  ExpiresByType image/gif "access 1 year"
+  ExpiresByType image/png "access 1 year"
+  ExpiresByType image/webp "access 1 year"
+  ExpiresByType application/x-font-ttf "access 1 year"
+  ExpiresByType font/opentype "access 1 year"
+</IfModule>
+
+# Force HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Disable directory listing
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# Custom error pages
+ErrorDocument 404 /404.html
+
+# Redirect products page to services
+<IfModule mod_rewrite.c>
+  RewriteRule ^products/?$ /services/ [R=301,L]
+</IfModule>
+
+# Redirect old GCP cost optimisation page to cloud cost optimisation
+<IfModule mod_rewrite.c>
+  RewriteRule ^services/gcp-cost-optimisation\.html$ /services/cloud-cost-optimisation.html [R=301,L]
+</IfModule>
+
+# Redirect old Google Cloud costs guide to generic cloud costs guide
+<IfModule mod_rewrite.c>
+  RewriteRule ^guides/reduce-google-cloud-costs\.html$ /guides/reduce-cloud-costs.html [R=301,L]
+</IfModule>
