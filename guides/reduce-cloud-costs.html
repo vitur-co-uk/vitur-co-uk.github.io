@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>How to Reduce Cloud Costs - Cloud Cost Optimisation Guide | Vitur</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+  <meta name="description" content="Guide to reducing cloud costs. Learn practical strategies for cloud cost optimisation including compute, storage, commitment planning and more.">
+  <meta name="keywords" content="reduce cloud costs, cloud cost optimisation, cost reduction strategies, cost management, cloud savings, infrastructure optimization">
+  <meta property="og:title" content="How to Reduce Cloud Costs - Cost Optimisation Guide">
+  <meta property="og:description" content="Comprehensive guide to reducing your cloud costs. Learn proven strategies and best practices.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://vitur.co.uk/guides/reduce-cloud-costs.html">
+  <link rel="canonical" href="https://vitur.co.uk/guides/reduce-cloud-costs.html">
+
+  <link rel="alternate" href="https://vitur.co.uk/guides/reduce-cloud-costs.html" hreflang="en">
+
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Reduce Cloud Costs">
+  <meta name="twitter:description" content="Practical strategies for reducing your cloud costs.">
+  <meta name="twitter:image" content="https://vitur.co.uk/assets/social-card.png">
+  <meta name="twitter:site" content="@viturcloud">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Reduce Cloud Costs: A Practical Guide",
+    "description": "Comprehensive guide to reducing cloud costs with proven strategies and best practices.",
+    "image": "https://vitur.co.uk/assets/social-card.png",
+    "datePublished": "2025-12-10",
+    "dateModified": "2025-12-10",
+    "author": {
+      "@type": "Organization",
+      "name": "Vitur Ltd",
+      "url": "https://vitur.co.uk"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Vitur Ltd",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vitur.co.uk/assets/logo.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <img src="/assets/logo.png" alt="Vitur logo" class="logo-img" />
+        <span class="logo-text">Vitur</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+  <main class="content">
+    <section class="page-hero">
+  <div class="container">
+    <h1>How to Reduce Cloud Costs</h1>
+    <p>Practical strategies and best practices for optimising your cloud infrastructure spend by 20-40%.</p>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Introduction: The Cost Optimisation Challenge</h2>
+  <p>Cloud platforms like AWS, Google Cloud and Azure are powerful infrastructure solutions, but without proper cost management, monthly bills can spiral quickly. Many organisations overspend on cloud infrastructure due to unoptimised resources, unused services, inefficient configurations or poor commitment planning.</p>
+  <p>The good news: most organisations can achieve 20-40% cost savings through strategic optimisation. In this guide, we'll share practical strategies you can implement immediately.</p>
+
+  <h2>1. Optimise Compute Resources</h2>
+  <h3>Right-size Your Instances</h3>
+  <p>Many organisations run instances that are too large for their actual workload. Use your cloud platform's monitoring tools to analyse CPU, memory and disk utilisation, then resize instances to match actual demand.</p>
+  <ul>
+    <li><strong>Review metrics:</strong> Check CPU utilisation, memory usage and network traffic</li>
+    <li><strong>Identify oversized instances:</strong> Look for instances with consistently low utilisation</li>
+    <li><strong>Resize:</strong> Move to appropriate machine types based on actual requirements</li>
+    <li><strong>Test thoroughly:</strong> Ensure application performance after resizing</li>
+  </ul>
+
+  <h3>Use Spot/Preemptible Instances</h3>
+  <p>Spot instances and preemptible VMs cost 60-90% less than standard on-demand instances. They're ideal for:</p>
+  <ul>
+    <li>Batch processing jobs</li>
+    <li>Data analysis workloads</li>
+    <li>Non-critical background tasks</li>
+    <li>Development and testing environments</li>
+  </ul>
+  <p><strong>Key consideration:</strong> These instances can be terminated with short notice, so use them for fault-tolerant workloads only.</p>
+
+  <h3>Implement Autoscaling</h3>
+  <p>Configure autoscaling policies to automatically adjust capacity based on demand:</p>
+  <ul>
+    <li>Scale up during peak traffic periods</li>
+    <li>Scale down during low-demand periods</li>
+    <li>Set aggressive scale-down policies to avoid idle capacity</li>
+    <li>Use predictive scaling to anticipate demand patterns</li>
+  </ul>
+
+  <h2>2. Optimise Storage Costs</h2>
+  <h3>Implement Storage Lifecycle Policies</h3>
+  <p>Move data to cheaper storage tiers as it ages:</p>
+  <ul>
+    <li><strong>Frequent access:</strong> Hot storage (standard tier)</li>
+    <li><strong>Occasional access:</strong> Warm storage (infrequent access tier)</li>
+    <li><strong>Archival:</strong> Cold storage (glacier/archive tier)</li>
+    <li><strong>Automatic transitions:</strong> Set policies to automatically migrate data</li>
+  </ul>
+
+  <h3>Clean Up Unused Storage</h3>
+  <p>Regularly audit and delete:</p>
+  <ul>
+    <li>Unattached volumes and disks</li>
+    <li>Old database snapshots</li>
+    <li>Unused backups</li>
+    <li>Duplicate or obsolete data</li>
+  </ul>
+
+  <h3>Data Transfer Optimisation</h3>
+  <p>Data transfer costs can be significant. Reduce egress charges by:</p>
+  <ul>
+    <li>Using content delivery networks (CDNs)</li>
+    <li>Caching data closer to users</li>
+    <li>Keeping data within the same region</li>
+    <li>Using direct connectivity instead of internet transit</li>
+  </ul>
+
+  <h2>3. Commitment Planning & Discounts</h2>
+  <h3>Reserved Instances / Committed Use Discounts</h3>
+  <p>Cloud providers offer significant discounts for long-term commitments:</p>
+  <ul>
+    <li><strong>1-year commitments:</strong> 20-30% discount</li>
+    <li><strong>3-year commitments:</strong> 40-60% discount</li>
+    <li><strong>Analysis first:</strong> Only commit to resources you're certain about</li>
+    <li><strong>Flexibility:</strong> Many providers offer flexible commitment plans</li>
+  </ul>
+
+  <h3>Savings Plans</h3>
+  <p>Savings plans offer flexibility across resource types and regions:</p>
+  <ul>
+    <li>Compute savings plans</li>
+    <li>Provider-specific savings plans</li>
+    <li>Greater flexibility than reserved instances</li>
+  </ul>
+
+  <h2>4. Database Cost Optimisation</h2>
+  <h3>Choose Appropriate Database Types</h3>
+  <ul>
+    <li>Relational databases for structured data</li>
+    <li>NoSQL for high-scale, flexible schemas</li>
+    <li>Time-series databases for metrics/telemetry</li>
+    <li>Managed vs. self-hosted trade-offs</li>
+  </ul>
+
+  <h3>Query Optimisation</h3>
+  <ul>
+    <li>Add indexes to frequently queried columns</li>
+    <li>Partition large tables for faster queries</li>
+    <li>Use query analysis tools to identify slow queries</li>
+    <li>Cache query results where appropriate</li>
+  </ul>
+
+  <h2>5. Monitoring & Governance</h2>
+  <h3>Implement Cost Visibility</h3>
+  <ul>
+    <li>Enable detailed cost tracking and allocation</li>
+    <li>Tag resources by team, project, or cost center</li>
+    <li>Set up automated cost alerts</li>
+    <li>Review costs weekly, not just monthly</li>
+  </ul>
+
+  <h3>Establish Governance Policies</h3>
+  <ul>
+    <li>Define approval processes for new resources</li>
+    <li>Set budget limits by team or project</li>
+    <li>Require tagging for all resources</li>
+    <li>Regular cost reviews and optimization meetings</li>
+  </ul>
+
+  <h2>Quick Wins Checklist</h2>
+  <p>Start with these quick wins that typically deliver immediate savings:</p>
+  <ul>
+    <li>☐ Remove unused resources (old instances, volumes, snapshots)</li>
+    <li>☐ Right-size oversized instances</li>
+    <li>☐ Enable storage lifecycle policies</li>
+    <li>☐ Implement reserved instance/commitment discounts</li>
+    <li>☐ Set up cost alerts and monitoring</li>
+    <li>☐ Review and optimize data transfer</li>
+  </ul>
+
+  <h2>Getting Help</h2>
+  <p>Cloud cost optimisation requires ongoing attention. If you'd like expert help analysing your cloud costs and developing an optimisation strategy, we're here to help.</p>
+  <p><strong><a href="/services/cloud-cost-optimisation.html">Learn more about our cloud cost optimisation services</a></strong> or <a href="https://calendly.com/vitur/30min">book a free 30-minute assessment</a> with our team.</p>
+
+</section>
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="col">
+      <div class="logo footer-logo">
+        <img src="/assets/logo.png" alt="Vitur logo" class="logo-img small" />
+        <span class="logo-text">Vitur</span>
+      </div>
+      <p class="tiny">Based in West Lothian, Scotland</p>
+      <p class="tiny">Registered in Scotland: SC734752</p>
+      <p class="tiny">Rosslyn Associates The Walled Garden, South Building, Bush Estate, Penicuik, Midlothian, Scotland, EH26 0SD</p>
+    </div>
+    <div class="col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://vitur.co.uk" target="_blank" rel="noopener">vitur.co.uk</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@vitur.co.uk">contact@vitur.co.uk</a></li>
+        <li><a href="https://www.linkedin.com/company/vitur-limited/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container tiny">
+    © Vitur Ltd 2025. All rights reserved.
+  </div>
+</footer>
+<script src="/assets/main.js"></script>
+</body>
+</html>
