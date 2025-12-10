@@ -1,24 +1,24 @@
 # Vitur Ltd Website - SEO Optimization Notes
 
 ## Overview
-This is the optimized website for Vitur Ltd, an IT and cyber security services company based in Bathgate, West Lothian, Scotland.
+This is the optimized website for Vitur Ltd, an IT and cyber security services company based in Bathgate, West Lothian, Scotland. The site's primary regional focus has been expanded to cover the Central Belt of Scotland (Edinburgh, Glasgow, Falkirk, Stirling and the Lothians).
 
 ## SEO Strategy
 
 ### Target Keywords
-- Primary: "IT services West Lothian", "cyber security West Lothian", "cloud cost optimisation Scotland"
+- Primary: "IT services Central Belt", "cyber security Central Belt", "cloud cost optimisation Scotland"
 - Secondary: "DevOps consultancy", "cloud security", "IT support Livingston", "Bathgate"
 - Long-tail: "reduce cloud costs", "GDPR compliance Scotland", "cloud security audit"
 
 ### Geographic Focus
-- Primary service area: West Lothian (Bathgate, Livingston, Linlithgow)
+- Primary service area: Central Belt (Edinburgh, Glasgow, West/Mid/East Lothian, Falkirk, Stirling, Clackmannanshire)
 - Secondary: Midlothian and East Lothian
 - Tertiary: Scotland and UK
 
 ### Page Structure
 
 **Core Pages:**
-- `/` (Homepage) - Main entry point, targets broad IT/cyber security keywords for West Lothian
+- `/` (Homepage) - Main entry point, targets broad IT/cyber security keywords for the Central Belt
 - `/services/` - Service listing page with breadcrumb schema
 - `/services/cloud-cost-optimisation.html` - Detailed service page with Service schema (generic cloud)
 - `/services/devops-consultancy.html` - DevOps focused page with Service schema
@@ -69,7 +69,7 @@ All pages include optimized:
 ### Keyword Strategy by Page
 
 **Homepage:**
-- Primary: "IT services West Lothian", "cyber security West Lothian"
+- Primary: "IT services Central Belt", "cyber security Central Belt"
 - Secondary: "cloud security", "DevOps consultancy", "cloud cost optimisation"
 
 **Cloud Cost Optimisation Page:**
@@ -82,7 +82,7 @@ All pages include optimized:
 - Secondary: "Kubernetes", "Terraform", "infrastructure automation"
 
 **Cyber Security Page:**
-- Primary: "cyber security West Lothian", "security audit Scotland"
+- Primary: "cyber security Central Belt", "security audit Scotland"
 - Secondary: "GDPR compliance", "ISO 27001", "security hardening"
 
 **Location Pages:**
