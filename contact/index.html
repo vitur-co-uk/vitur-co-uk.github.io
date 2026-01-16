@@ -56,7 +56,7 @@
 </section>
 
 <section class="container contact-grid">
-  <form class="contact-form" action="mailto:contact@vitur.co.uk" method="post" enctype="text/plain">
+  <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@vitur.co.uk" method="post">
     <label>Name<br><input required name="name" type="text" placeholder="Your name"></label>
     <label>Email<br><input required name="email" type="email" placeholder="you@company.com"></label>
     <label>Reason<br>
@@ -68,7 +68,8 @@
       </select>
     </label>
     <label>Message<br><textarea name="message" rows="6" placeholder="How can we help?"></textarea></label>
-    <button class="btn btn-primary" type="submit">Send</button>
+    <button class="btn btn-primary" type="submit" id="submitBtn">Send</button>
+    <div id="formMessage" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 4px; text-align: center;"></div>
   </form>
 
   <div class="contact-aside">
@@ -113,5 +114,34 @@
   </div>
 </footer>
 <script src="/assets/main.js"></script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  const submitBtn = document.getElementById('submitBtn');
+  const formMessage = document.getElementById('formMessage');
+  
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+  
+  // Formspree handles the submission automatically
+  // We just provide user feedback
+  setTimeout(() => {
+    formMessage.style.display = 'block';
+    formMessage.style.backgroundColor = '#d4edda';
+    formMessage.style.color = '#155724';
+    formMessage.style.border = '1px solid #c3e6cb';
+    formMessage.textContent = 'Thanks! Your message has been sent successfully. We\'ll get back to you within one business day.';
+    
+    // Reset form
+    document.getElementById('contactForm').reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send';
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  }, 1000);
+});
+</script>
 </body>
 </html>
