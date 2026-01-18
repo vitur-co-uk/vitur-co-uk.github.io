@@ -56,4 +56,105 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   })();
 
+  // ---------------------------
+  // Site-wide under-construction overlay (opaque + self-healing)
+  // Reads /site-config.json; when `underConstruction: true` hides page content
+  // (removes it from layout) and shows an opaque overlay. A MutationObserver
+  // and periodic check attempt to restore the overlay if removed from devtools.
+  (function checkSiteConfig(){
+    try {
+      fetch('/site-config.json', { cache: 'no-store' })
+        .then(function(res){ if (!res.ok) throw new Error('no config'); return res.json(); })
+        .then(function(cfg){
+          if (!cfg || !cfg.underConstruction) return;
+          var msg = cfg.message || 'This site is under construction. Please check back soon.';
+          var bg = cfg.backgroundColor || '#ffffff';
+          var fg = cfg.textColor || '#000000';
+
+          // create overlay element (keep reference so we can re-append)
+          var overlay = document.getElementById('site-under-construction') || document.createElement('div');
+          overlay.id = 'site-under-construction';
+          overlay.setAttribute('role', 'dialog');
+          overlay.setAttribute('aria-modal', 'true');
+          overlay.setAttribute('tabindex', '-1');
+          // inline styles to make tampering slightly harder
+          overlay.style.position = 'fixed';
+          overlay.style.top = '0';
+          overlay.style.left = '0';
+          overlay.style.width = '100%';
+          overlay.style.height = '100%';
+          overlay.style.background = bg;
+          overlay.style.color = fg;
+          overlay.style.zIndex = '2147483647';
+          overlay.style.display = 'flex';
+          overlay.style.flexDirection = 'column';
+          overlay.style.alignItems = 'center';
+          overlay.style.justifyContent = 'center';
+          overlay.style.textAlign = 'center';
+          overlay.style.padding = '24px';
+          overlay.style.overflow = 'auto';
+
+          overlay.innerHTML = '<div style="max-width:900px; margin: 0 12px">' +
+            '<h1 style="font-size:32px; margin-bottom:12px">Under Construction</h1>' +
+            '<p style="font-size:18px; margin-bottom:18px; line-height:1.4">' + escapeHtml(msg) + '</p>' +
+            '</div>';
+
+          // Hide all other body children from layout and accessibility tree
+          Array.from(document.body.children).forEach(function(child){
+            if (child === overlay) return;
+            try {
+              child.setAttribute('data-hidden-by-uc','true');
+              child.setAttribute('aria-hidden','true');
+              child.style.display = 'none';
+            } catch (e) {}
+          });
+
+          // Inject high-specificity CSS rule with !important as a defense-in-depth
+          var cssId = 'site-under-construction-inline-style';
+          if (!document.getElementById(cssId)){
+            try {
+              var styleEl = document.createElement('style');
+              styleEl.id = cssId;
+              styleEl.appendChild(document.createTextNode('\n#site-under-construction{position:fixed !important; inset:0 !important; z-index:2147483647 !important; display:flex !important;}\n'));
+              (document.head || document.documentElement).appendChild(styleEl);
+            } catch (e) {}
+          }
+
+          // Append overlay as last child so it sits above everything
+          if (!document.getElementById('site-under-construction')) document.body.appendChild(overlay);
+          try { overlay.focus(); } catch (e) {}
+
+          // Self-healing: restore overlay if removed or hidden
+          var restoreOverlay = function(){
+            if (!document.getElementById('site-under-construction')) {
+              try { document.body.appendChild(overlay); } catch (e) {}
+            } else {
+              var o = document.getElementById('site-under-construction');
+              if (o.style.display === 'none') o.style.display = 'flex';
+            }
+            // re-hide underlying content
+            Array.from(document.body.children).forEach(function(child){ if (child !== overlay){ try { child.setAttribute('data-hidden-by-uc','true'); child.setAttribute('aria-hidden','true'); child.style.display='none'; } catch(e){} }});
+          };
+
+          var mo = new MutationObserver(function(muts){ restoreOverlay(); });
+          mo.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+
+          // periodic fallback
+          var intervalId = setInterval(restoreOverlay, 2000);
+
+          // keep references on overlay for potential debugging
+          overlay.__uc = { restore: restoreOverlay, observer: mo, intervalId: intervalId };
+        })
+        .catch(function(){ /* missing config or fetch error - normal site */ });
+    } catch (e) {
+      // ignore
+    }
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, function(m){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+      });
+    }
+  })();
+
 });
